@@ -19,7 +19,8 @@ if (parseInt(cant_veces) <= 0) {
 //si el número es mayor que cero
 else {
     //ciclo for que se repite según la cantidad de veces que el usuario ingresó
-    for (i = 0; i < cant_veces; i++) {
+    // ojo que funciona igual sólo con cant_veces sin pasarla a entero
+    for (let i = 0; i < parseInt(cant_veces); i++) {
         //se le pregunta por su elección
         let jugada = prompt("Ingrese 0 para elegir piedra, 1 para papel, 2 para tijera")
         //se valida si es que los datos son válidos y de no serlo lo trata de porfiado
