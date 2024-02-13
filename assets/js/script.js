@@ -1,11 +1,11 @@
-//este programa no funciona óptimamente si sólo se pone un acento o un carácter similar
+//este programa no funciona óptimamente si sólo se pone un acento o un caracter similar en la cantidad de veces para jugar
 
 //se pide al usuario que ingrese la cantidad de veces que quiere jugar
 let cant_veces = prompt("Ingrese cantidad de veces que quiere jugar")
 
 //se comprueba si el usuario ingresó un número
 //si el usuario no ingresa un número, se le reta y se le vuelve a preguntar, hasta que ingrese un número 
-while (isNaN(cant_veces)) {
+while (isNaN(cant_veces))  {
     alert("Elige un número te están diciendo... NÚMERO! NU-ME-RO!")
     cant_veces = prompt("Ingrese cantidad de veces que quiere jugar")
 }
@@ -22,18 +22,20 @@ else {
     // ojo que funciona igual sólo con cant_veces sin pasarla a entero
     for (let i = 0; i < parseInt(cant_veces); i++) {
         //se le pregunta por su elección
-        let jugada = prompt("Ingrese 0 para elegir piedra, 1 para papel, 2 para tijera")
-        //se valida si es que los datos son válidos y de no serlo lo trata de porfiado
-        //además le sigue preguntando hasta que ingrese una opción válida
-        while (parseInt(jugada) < 0 || parseInt(jugada) > 2 || isNaN(jugada)) {
-            jugada = prompt("Ingrese 0 para elegir piedra, 1 para papel, 2 para tijera, no sea porfiado")
+        let jugada = prompt("Ingrese Piedra / Papel / Tijera")
+
+
+        //validación del dato ingresado
+        //lo insulta y le pregunta hasta que responda adecuadamente
+        while (jugada !== "Tijera" && jugada !== "Papel" && jugada !== "Piedra") {
+            alert("Elija lo que le están pidiendo, no sea bestia")
+            jugada = prompt("Elija: Piedra / Papel / Tijera")
         }
-        //una vez ingresada una opción válida, se pasa de string a entero
-        jugada = parseInt(jugada)
+   
         //se asigna la jugada de la máquina de manera aleatoria y sacando sólo la parte entera
         let j_machine = Math.floor(Math.random() * 3)
+        alert("Elegiste " + jugada)
         //se envían alertas utilizando funciones
-        alert("Elegiste " + identificar_jugada(jugada))
         alert("La máquina eligió " + identificar_jugada(j_machine))
         alert("" + resultado(jugada, j_machine))
     }
@@ -45,22 +47,24 @@ else {
 function identificar_jugada(n) {
     switch (n) {
         case 0:
-            return "piedra"
-            break;
+            return "Piedra"
 
+            break;
         case 1:
-            return "papel"
+            return "Papel"
             break;
-
         default:
-            return "tijera"
+            return "Tijera"
             break;
     }
+
 }
+
+
 //compara la jugada de la máquina y la del usuario, usando 0 1 2
 //entrega un resultado
 function resultado(a, b) {
-    if (a == 0) {
+    if (a == "Piedra") {
         switch (b) {
             case 0:
                 return "Empate"
@@ -73,7 +77,7 @@ function resultado(a, b) {
 
         }
     }
-    if (a == 1) {
+    if (a == "Papel") {
         switch (b) {
             case 0:
                 return "Bieeennnn... ganaste"
